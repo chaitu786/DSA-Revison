@@ -2,20 +2,16 @@
 function runProgram(input){
     input=input.trim().split("\n")
     let N=+input[0]
-    console.log(nWays(N));
-    
+    console.log(beyond(N).toFixed(4));
 }
-function nWays(N){
-  if(N==0){
-    return 1
-  }
-  if(N<0){
-    return 0
-  }
-  return nWays(N-1)+nWays(N-2)+nWays(N-3)
+function beyond(N){
+    if(N==1){
+        return 1
+    }
+    return beyond(N-1)+Math.log(N)
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`4`);
+  runProgram(`3`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

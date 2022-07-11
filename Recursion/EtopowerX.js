@@ -1,21 +1,23 @@
 
 function runProgram(input){
     input=input.trim().split("\n")
-    let N=+input[0]
-    console.log(nWays(N));
-    
+    let [x,n]=input[0].split(" ").map(Number)
+    console.log(et(x,n).toFixed(4));
 }
-function nWays(N){
-  if(N==0){
-    return 1
-  }
-  if(N<0){
-    return 0
-  }
-  return nWays(N-1)+nWays(N-2)+nWays(N-3)
+function et(x,n){
+    if(n==0){
+        return 1
+    }
+   return Math.pow(x,n)/factorial(n)+et(x,n-1)
+}
+function factorial(n){
+    if(n==0){
+        return 1
+    }
+    return n*factorial(n-1)
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`4`);
+  runProgram(`4 2`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

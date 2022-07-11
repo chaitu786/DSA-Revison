@@ -1,21 +1,29 @@
 
 function runProgram(input){
     input=input.trim().split("\n")
-    let N=+input[0]
-    console.log(nWays(N));
-    
+    var tc=+input[0]
+   var line=1;
+   for(var i=0;i<tc;i++){
+       var N=+input[line++]
+       var str=input[line++].trim().split(" ").map(Number)
+       var x=sum(N,str)
+       console.log(x)
+   }
 }
-function nWays(N){
-  if(N==0){
-    return 1
-  }
-  if(N<0){
-    return 0
-  }
-  return nWays(N-1)+nWays(N-2)+nWays(N-3)
+function sum(N,str){
+    if(N<=0){
+        return 0
+    }
+    return sum(N-1,str)+str[N-1]
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`4`);
+  runProgram(`3
+  5
+  6 3 8 2 -4
+  5
+  -10 -7 10 2 -2
+  5
+  -4 -5 6 -3 9`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

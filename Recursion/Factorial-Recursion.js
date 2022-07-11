@@ -2,20 +2,16 @@
 function runProgram(input){
     input=input.trim().split("\n")
     let N=+input[0]
-    console.log(nWays(N));
-    
+    console.log(factorial(N));
 }
-function nWays(N){
-  if(N==0){
-    return 1
-  }
-  if(N<0){
-    return 0
-  }
-  return nWays(N-1)+nWays(N-2)+nWays(N-3)
+const factorial=(N)=>{
+    if(N==0){
+        return 1
+    }
+    return N*factorial(N-1)
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`4`);
+  runProgram(`5`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

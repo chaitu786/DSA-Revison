@@ -2,20 +2,25 @@
 function runProgram(input){
     input=input.trim().split("\n")
     let N=+input[0]
-    console.log(nWays(N));
-    
+    let arr=input[1].trim().split(" ").map(Number)
+    console.log(Sort(N,arr));
 }
-function nWays(N){
-  if(N==0){
-    return 1
-  }
-  if(N<0){
-    return 0
-  }
-  return nWays(N-1)+nWays(N-2)+nWays(N-3)
+function Sort(N,arr){
+    if(N==0){
+        return arr.join(" ")
+    }
+    for(let i=0;i<N;i++){
+        if(arr[i]>arr[i+1]){
+            let swap=arr[i]
+            arr[i]=arr[i+1]
+            arr[i+1]=swap
+        }
+    }
+    return Sort(N-1,arr)
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`4`);
+  runProgram(`5
+  3 5 0 9 8`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
