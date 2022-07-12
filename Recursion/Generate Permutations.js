@@ -1,26 +1,29 @@
 
 function runProgram(input){
     input=input.trim().split("\n")
-    let str=input[0]
-    let bag=""
-    let x=0
-    Generateallsubsequence(str,bag,x)
+    let arr=input[1].trim().split(" ").map(Number)
+    GeneratePermutations(arr,[],{})
 }
-function Generateallsubsequence(str,bag,x){
-    if(bag.length>0){
-        console.log(bag)
+function GeneratePermutations(arr,stack,obj){
+  if(arr.length==stack.length){
+    console.log(stack.join(' '))
+  }
+  for(let i=0;i<arr.length;i++){
+    if(obj[arr[i]]){
+      continue
     }
-    if(x==str.length){
-        return
+    else{
+      obj[arr[i]]=true
+      stack.push(arr[i])
+      GeneratePermutations(arr,stack,obj)
+      obj[arr[i]]=false
+      stack.pop()
     }
-    for(let i=x;i<str.length;i++){
-        bag+=str[i]
-        Generateallsubsequence(str,bag,i+1)
-        bag=bag.slice(0,-1)
-    }
+  }
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`abcd`);
+  runProgram(`3
+  1 2 3`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
