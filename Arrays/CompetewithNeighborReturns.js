@@ -1,22 +1,34 @@
 
 function runProgram(input){
     input=input.trim().split("\n")
-    let arr=input[0].trim().split(",").map(Number)
-    // console.log(arr);
-    let max=-Infinity
-    let min=Infinity
-    for(let i=0;i<arr.length;i++){
-        if(arr[i]>max){
-            max=arr[i]
+    let N=+input[0].trim()
+    let arr=input[1].trim().split(" ").map(Number)
+    neighbour(N,arr)
+}
+function neighbour(N,arr){
+    let count=0
+    for(let i=0;i<N;i++){
+        if(i==0){
+            if(arr[i]>arr[i+1]){
+                count++
+            }
         }
-         if(arr[i]<min){
-            min=arr[i]
+        else if(i==N-1){
+            if(arr[i]>arr[i-1]){
+                count++
+            }
+        }
+        else{
+            if(arr[i]>arr[i+1]&& arr[i]>arr[i-1]){
+                count++
+            }
         }
     }
-    console.log(max,min);
+    console.log(count)
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`1000,100,-1000,1,100000,99999999999,-999999999999`);
+  runProgram(`4
+  8 15 3 7`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");

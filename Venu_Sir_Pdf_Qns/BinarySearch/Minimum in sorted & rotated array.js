@@ -1,22 +1,30 @@
 
 function runProgram(input){
     input=input.trim().split("\n")
-    let arr=input[0].trim().split(",").map(Number)
-    // console.log(arr);
-    let max=-Infinity
-    let min=Infinity
-    for(let i=0;i<arr.length;i++){
-        if(arr[i]>max){
-            max=arr[i]
+    let N=+input[0].trim()
+    let arr=input[1].trim().split(" ").map(Number)
+    console.log(Min(N,arr))
+}
+function Min(N,arr){
+    let left=0
+    let right=N-1
+    while(left<right){
+        let mid=Math.floor((left+right)/2)
+        if(arr[mid]>arr[right]){
+            left=mid+1
         }
-         if(arr[i]<min){
-            min=arr[i]
+        else if(arr[mid]==arr[right]){
+            right--
+        }
+        else{
+            right=mid
         }
     }
-    console.log(max,min);
+    return arr[right]
 }
 if (process.env.USERNAME === "Chaithanya") {
-  runProgram(`1000,100,-1000,1,100000,99999999999,-999999999999`);
+  runProgram(`10
+  4 6 7 9 10 -1 0 1 2 3`);
 } else {
   process.stdin.resume();
   process.stdin.setEncoding("ascii");
