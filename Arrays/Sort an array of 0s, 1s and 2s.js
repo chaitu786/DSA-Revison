@@ -24,10 +24,10 @@ function Sort(N,arr){
 
     while(i<=right){
         if(arr[i]==0){
-            swap(arr[i++],arr[left++])
+            swap(arr,i++,left++)
         }
         else if(arr[i]===2){
-            swap(arr[i],arr[right--])
+            swap(arr,i,right--)
         }
         else{
             i++
